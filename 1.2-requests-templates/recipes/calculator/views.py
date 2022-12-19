@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, reverse
 
 DATA = {
     'omlet': {
@@ -18,6 +19,19 @@ DATA = {
     },
     # можете добавить свои рецепты ;)
 }
+
+
+def recipe_builder (request, dish):
+    persons = int(request.GET.get('persons', 1))
+    dict = {}
+    if persons > 1:
+        for ingredient in DATA.get(dish):
+            dict[ingredient] = DATA[dish][ingredient] * persons
+        context = {'recipe': dict}
+    else:
+        context = {'recipe': DATA.get(dish)}
+
+    return render(request, 'calculator/index.html', context)
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
