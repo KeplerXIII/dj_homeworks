@@ -20,6 +20,6 @@ from calculator.views import recipe_builder
 
 urlpatterns = [
     # здесь зарегистрируйте вашу view-функцию
-    path('<dish>/', recipe_builder, name='recipes')
+    path('<str:dish>/', recipe_builder, name='recipes')
 
 ]
