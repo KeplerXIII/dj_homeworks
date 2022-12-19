@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обзор</title>
+</head>
+<body>
+<p style="color: #0c5460; font-size: 20px">Файлы в рабочей директории:</p>
+<ul style="color: #0c5460; font-size: 20px">
+    {%  for x in msg%}
+    <li>{{ x }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

@@ -36,6 +36,11 @@ def workdir_view(request):
     # который возвращает список файлов в рабочей 
     # директории
     mypath = "."
-    onlyfiles = [f for f in os.listdir(mypath) if isfile(join(mypath, f))]
-    msg = (f'  ..{x}' for x in onlyfiles)
-    return HttpResponse(msg)
+    template_name = 'app/workdir_view.html'
+    context = {
+        'msg': [f for f in os.listdir(mypath) if isfile(join(mypath, f))]
+    }
+    # mypath = "."
+    # context = [f for f in os.listdir(mypath) if isfile(join(mypath, f))]
+    # msg = (f'  ..{x}' for x in onlyfiles)
+    return render(request, template_name, context)
