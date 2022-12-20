@@ -22,12 +22,11 @@ def bus_stations(request):
             station_list.append({'Name': row['Name'], 'Street': row['Street'], 'District': row['District']})
 
     paginator = Paginator(station_list, 10)
-    bus_stations = paginator.get_page(page_number)
     page = paginator.get_page(page_number)
 
 
     context = {
-        'bus_stations': bus_stations,
+        'bus_stations': page,
         'page': page,
     }
     return render(request, 'stations/index.html', context)
