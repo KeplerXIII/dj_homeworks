@@ -22,12 +22,13 @@ def catalogue(request):
 
 def search(request, dt: datetime):
     date = dt.date()
-    # book_list = [x for x in Book.objects.all()]
-    # paginator = Paginator(book_list, 1)
-    # page = paginator.get_page(1)
+    book_list = [x for x in Book.objects.all()]
+    paginator = Paginator(book_list, 1)
+    page = paginator.get_page(1)
     print(Book.objects.get(pub_date=date))
     book = Book.objects.get(pub_date=date)
     context = {
-        'book': book,
+        'books': book_list,
+        'page': page,
     }
     return render(request, 'books/search.html', context)

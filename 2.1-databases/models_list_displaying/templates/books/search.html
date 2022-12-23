@@ -8,13 +8,13 @@
             <h1><a href="/books">Каталог</a></h1>
         </div>
         <div class="row">
-
+        {% for book in books %}
                 <div class="book col-md-4">
                     <h2>{{ book.name }}</h2>
                     <p>Автор: {{ book.author }}</p>
                     <p>Дата публикации: {{ book.pub_date }}</p>
                 </div>
-
+        {% endfor %}
         {% if page.has_previous %}
             <a class="button button-primary" href="?page={{ page.previous_page_number }}">⟵</a>
         {% endif %}
