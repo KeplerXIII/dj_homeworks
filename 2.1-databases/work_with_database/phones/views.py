@@ -21,6 +21,9 @@ def show_catalog(request):
 
 
 def show_product(request, slug):
+    phone = Phone.objects.get(slug=slug)
     template = 'product.html'
-    context = {}
+    context = {
+        'phone': phone
+    }
     return render(request, template, context)
