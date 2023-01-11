@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.views.generic import ListView
 from django.shortcuts import render
 
@@ -20,3 +21,7 @@ def students_list(request):
 
 
     return render(request, template, context)
+
+def sample_view(request):
+    template = 'school/debug.html'
+    return render(request, template)
