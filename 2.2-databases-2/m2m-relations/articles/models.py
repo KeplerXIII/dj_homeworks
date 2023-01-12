@@ -17,20 +17,22 @@ class Article(models.Model):
         return self.title
 
 class Tag(models.Model):
-    Tag = models.CharField(max_length=10, verbose_name='Тег')
+    name = models.CharField(max_length=15, verbose_name='Тег')
 
     class Meta:
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
 
     def __str__(self):
-        return self.Tag
+        return self.name
 
 class Scope(models.Model):
-    Article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='scopes', verbose_name='Статья')
-    Tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='Тег', related_name='scopes', max_length=10)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='scopes', verbose_name='Статья')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='Тег', related_name='scopes', max_length=10)
+    is_main = models.BooleanField(verbose_name='Основной', default=False)
 
     class Meta:
+        # Добавил наименования, для нормально отображения в инлайне
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
 
