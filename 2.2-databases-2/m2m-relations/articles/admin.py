@@ -12,7 +12,9 @@ class ScopeInlineFormset(BaseInlineFormSet):
             if len(form.cleaned_data) > 0:
                 check_list.append(form.cleaned_data['is_main'])
         if check_list.count(True) > 1:
-            raise ValidationError('Тут всегда ошибка')
+            raise ValidationError('Основным может быть только один раздел.')
+        if check_list.count(True) == 0:
+            raise ValidationError('Укажите основной раздел.')
 
         return super().clean()  # вызываем базовый код переопределяемого метода
 
