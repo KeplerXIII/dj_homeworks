@@ -63,19 +63,19 @@ Content-Type: application/json
 ###
 
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH http://127.0.0.1:8000/api/v1/stocks/12/
 Content-Type: application/json
 
 {
   "positions": [
     {
       "product": 2,
-      "quantity": 100,
+      "quantity": 50,
       "price": 130.80
     },
     {
       "product": 3,
-      "quantity": 243,
+      "quantity": 50,
       "price": 145
     }
   ]
