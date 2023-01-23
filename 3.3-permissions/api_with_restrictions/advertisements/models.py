@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django_filters import FilterSet, DateTimeFromToRangeFilter
 
 
 class AdvertisementStatusChoices(models.TextChoices):
